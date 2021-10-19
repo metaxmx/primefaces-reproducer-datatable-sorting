@@ -11,9 +11,12 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.string}</h1>
+        <h1>InputNumber Test</h1>
         <h:form id="frmTest">
-            
+            <p:growl id="grwl"/>
+            <p:inputNumber id="number" symbol=" " symbolPosition="s" value="#{testView.decimal}">
+                <p:ajax update="@form" process="@this"/>
+            </p:inputNumber>
         </h:form>
 
     </h:body>
