@@ -11,8 +11,25 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.string}</h1>
+        <h1>Monitor Download</h1>
         <h:form id="frmTest">
+
+            <script type="text/javascript">
+                function showStatus() {
+                    PF('statusDialog').show();
+                }
+                function hideStatus() {
+                    PF('statusDialog').hide();
+                }
+            </script>
+
+            <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false">
+               Download Running. Please Wait ...
+            </p:dialog>
+
+            <p:commandButton value="Download" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)" ajax="false">
+                <p:fileDownload value="#{fileBean.file}" contentDisposition="attachment"/>
+            </p:commandButton>
 
         </h:form>
 
